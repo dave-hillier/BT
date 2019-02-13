@@ -7,15 +7,15 @@ namespace BS.UnitTest
     [TestFixture]
     public class GameTests
     {
-        private Mock<IDisplayBoard> _boardDisplayer;
+        private Mock<IBoardWriter> _boardDisplayer;
         private Mock<IPlayerInput> _userInput;
         private readonly Random _rand = new Random();
 
         [OneTimeSetUp]
         public void Setup()
         {
-            _boardDisplayer = new Mock<IDisplayBoard>();
-            _boardDisplayer.Setup(x => x.DisplayBoard(It.IsAny<IBoard>()))
+            _boardDisplayer = new Mock<IBoardWriter>();
+            _boardDisplayer.Setup(x => x.WriteBoard(It.IsAny<IBoard>()))
                 .Callback((IBoard b) => DisplayCallBack(b));
 
             _userInput = new Mock<IPlayerInput>();

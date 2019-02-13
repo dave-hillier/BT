@@ -2,9 +2,9 @@ namespace BS
 {
     public class Game
     {
-        private readonly IDisplayBoard _displayer;
+        private readonly IBoardWriter _displayer;
 
-        public Game(IDisplayBoard displayer)
+        public Game(IBoardWriter displayer)
         {
             _displayer = displayer;
         }
@@ -48,8 +48,8 @@ namespace BS
         private void GameEnd(PlayerManager winner, PlayerManager loser)
         {
             Winner = winner;
-            Log.Output($"{winner.Player.Name} Won the game");
-            Log.Output($"{loser.Hits} successful hits and {loser.Misses} misses");
+            Log.Write($"{winner.Player.Name} Won the game");
+            Log.Write($"{loser.Hits} successful hits and {loser.Misses} misses");
             Player.PrintStatus(_displayer);
         }
     }

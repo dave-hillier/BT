@@ -8,15 +8,15 @@ namespace BS
     {
         private static void Main(string[] args)
         {
-            Log.Output("Welcome to Battel Ship game!");
-            Log.Output("Would you like to start a game ? [Yy] for yes, anykey for no");
+            Log.Write("Welcome to Battel Ship game!");
+            Log.Write("Would you like to start a game ? [Yy] for yes, anykey for no");
             var newGame = Console.ReadLine();
             if (newGame.ToLower() == "y")
             {
                 StartNewGame();
             }
 
-            Log.Output("Good bye");
+            Log.Write("Good bye");
         }
 
         private static void StartNewGame()
@@ -24,7 +24,7 @@ namespace BS
             var kernel = new StandardKernel();
             kernel.Load(Assembly.GetExecutingAssembly());
 
-            Log.Output("Please enter your name");
+            Log.Write("Please enter your name");
             var playerName = Console.ReadLine();
             var game = kernel.Get<Game>();
             

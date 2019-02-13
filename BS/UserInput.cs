@@ -6,7 +6,7 @@ namespace BS
     {
         public Coordinates ReadCoordinates()
         {
-            Log.Output(
+            Log.Write(
                 "Please Enter a coordinates using letters for rows and number for columns, ex: A5 (A for row and 5 for column)");
             while (true)
             {
@@ -15,7 +15,7 @@ namespace BS
                 var y = -1;
                 if (input.Length != 2)
                 {
-                    Log.Error("Invalid input, Please try again");
+                    Log.WriteError("Invalid input, Please try again");
                     continue;
                 }
 
@@ -23,7 +23,7 @@ namespace BS
 
                 if (!int.TryParse(input[1].ToString(), out y))
                 {
-                    Log.Error("Invalid Column vale, Please try again");
+                    Log.WriteError("Invalid Column vale, Please try again");
                     continue;
                 }
 
@@ -33,7 +33,7 @@ namespace BS
 
         public Orientation ReadDirection()
         {
-            Log.Output("To which orientation: [Hh] for horizontal, and [Vv] vertical of the grid)");
+            Log.Write("To which orientation: [Hh] for horizontal, and [Vv] vertical of the grid)");
             while (true)
             {
                 var orientation = Console.ReadLine();
@@ -45,7 +45,7 @@ namespace BS
                         return Orientation.Vertical;
                 }
 
-                Log.Error("Invalid Horizontal/Vertical orientation, Please try again");
+                Log.WriteError("Invalid Horizontal/Vertical orientation, Please try again");
             }
         }
     }

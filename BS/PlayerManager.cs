@@ -40,10 +40,10 @@
         /// <summary>
         /// Display the player board using the givin displayer adapter
         /// </summary>
-        public void PrintStatus(IDisplayBoard displayer)
+        public void PrintStatus(IBoardWriter displayer)
         {
             Player.PrintDetails();
-            displayer.DisplayBoard(_board);
+            displayer.WriteBoard(_board);
         }
     }
 }

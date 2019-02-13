@@ -2,9 +2,9 @@ using System.Text;
 
 namespace BS
 {
-    public class ConsoleBoardDisplayer : IDisplayBoard // TODO: Has no state is this worthy of being a class? could be static
+    public class ConsoleBoardWriter : IBoardWriter // TODO: Has no state is this worthy of being a class? could be static
     {
-        public void DisplayBoard(IBoard board)
+        public void WriteBoard(IBoard board)
         {
             var output = new StringBuilder();
             output.AppendLine("  " + string.Join(' ', RowLabels.Labels.Substring(0, Board.MaxRow).ToCharArray()));
@@ -19,7 +19,7 @@ namespace BS
                 }
             }
 
-            Log.Output(output.ToString());
+            Log.Write(output.ToString());
         }
     }
 }

@@ -8,7 +8,7 @@ namespace BS
         public override void Load()
         {
             Bind<IBoard>().To<Board>();
-            Bind<IDisplayBoard>().To<ConsoleBoardDisplayer>();
+            Bind<IBoardWriter>().To<ConsoleBoardWriter>();
             Bind<IPlayerInput>().To<UserInput>();
             Bind<IPlayerInput>().To<ComputerInput>();
             Bind<Game>().ToSelf();

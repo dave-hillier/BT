@@ -32,7 +32,7 @@ namespace BS
         {
             if (!IsLive())
             {
-                Log.Output("All ships have been sunk, and player lost already!, please check the correct value");
+                Log.Write("All ships have been sunk, and player lost already!, please check the correct value");
                 return false;
             }
 
@@ -72,17 +72,17 @@ namespace BS
 
             var endLocation = GetEndLocation(ship.Size, startLocation, orientation);
 
-            var cells = InsureEmptyCells(startLocation, endLocation);
+            var cells = EnsureEmptyCells(startLocation, endLocation);
 
             if (cells == null)
             {
-                Log.Output($"Cannot add {ship.Type} on your board at {startLocation} toward {orientation}");
+                Log.Write($"Cannot add {ship.Type} on your board at {startLocation} toward {orientation}");
                 return false;
             }
 
             UpdateCells(cells, ship);
             Ships.Add(ship);
-            Log.Output($"Ship {ship} added on your board at {startLocation} toward {orientation}");
+            Log.Write($"Ship {ship} added on your board at {startLocation} toward {orientation}");
             return true;
         }
 
@@ -105,7 +105,7 @@ namespace BS
 
         private void AddShip(Ship ship)
         {
-            Log.Output($"Adding ship: {ship}");
+            Log.Write($"Adding ship: {ship}");
             while (true)
             {
                 var coords = _playerInput.ReadCoordinates();
@@ -155,7 +155,7 @@ namespace BS
         {
             if (Ships.Count == ShipCapacity)
             {
-                Log.Output($"You have the maximum number of ships:({ShipCapacity})!");
+                Log.Write($"You have the maximum number of ships:({ShipCapacity})!");
                 return true;
             }
 
@@ -180,7 +180,7 @@ namespace BS
         /// <summary>
         /// Make sure that position for ship is empty 
         /// </summary>
-        private List<Coordinates> InsureEmptyCells(Coordinates startLoc, Coordinates endLoc) // DH: Ensure
+        private List<Coordinates> EnsureEmptyCells(Coordinates startLoc, Coordinates endLoc)
         {
             var validLocs = new List<Coordinates>();
             if (!ValidCoordinates(startLoc) || !ValidCoordinates(endLoc))

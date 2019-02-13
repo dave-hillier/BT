@@ -23,7 +23,7 @@ namespace BS
         /// </summary>
         public void PrintDetails()
         {
-            Log.Output(Name);
+            Log.Write(Name);
         }
     }
 }
