@@ -3,7 +3,7 @@ namespace BS
     /// <summary>
     /// <see cref="Game" Player/>
     /// </summary>
-    public class Player : IPlayer
+    public class Player : IPlayer // DH pure data, consider at least removing the interface and alternatively using a tuple
     {
         public Player(string name, bool isComputer)
         {

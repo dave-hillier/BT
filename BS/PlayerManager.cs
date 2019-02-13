@@ -5,7 +5,7 @@ namespace BS
     /// <summary>
     /// <see cref="Player" Manager/>
     /// </summary>
-    public class PlayerManager
+    public class PlayerManager // DH: Class named Manager is a smell particularly as its 
     {
         private readonly IBoard _board;
         private Random _rand = new Random();
@@ -21,7 +21,7 @@ namespace BS
 
         public IPlayer Player { get; }
 
-        public int Hits => _board != null ? _board.Hits : 0;
+        public int Hits => _board != null ? _board.Hits : 0; // DH: consider using the newer ?. language feature
 
         public object Misses => _board != null ? _board.Misses : 0;
 
@@ -50,7 +50,7 @@ namespace BS
         }
 
 
-        private void AddShips()
+        private void AddShips() // DH: why not inline this?
         {
             _board.InstallShips();
         }

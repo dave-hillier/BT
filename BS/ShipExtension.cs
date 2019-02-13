@@ -10,7 +10,7 @@ namespace BS
         public static Cell ToCell(this Ship ship)
         {
             Cell cell;
-            Enum.TryParse(ship.Type.ToString(), out cell);
+            Enum.TryParse(ship.Type.ToString(), out cell); // DH: inline out new c# feature
             return cell;
         }
     }

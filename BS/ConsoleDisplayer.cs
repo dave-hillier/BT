@@ -2,7 +2,7 @@ using System.Text;
 
 namespace BS
 {
-    public class ConsoleBoardDisplayer : IDisplayBoard
+    public class ConsoleBoardDisplayer : IDisplayBoard // TODO: Has no state is this worthy of being a class? could be static
     {
         public void DisplayBoard(IBoard board)
         {

@@ -2,6 +2,7 @@ using Ninject.Modules;
 
 namespace BS
 {
+    // DH: How many lines of code does this actually save?
     public class BSModule : NinjectModule
     {
         public override void Load()

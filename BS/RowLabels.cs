@@ -1,6 +1,6 @@
 namespace BS
 {
-    public class RowLabels
+    public class RowLabels // DH: make static
     {
         public const string Labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -16,7 +16,7 @@ namespace BS
                 return Labels.IndexOf(label);
             }
 
-            return -1;
+            return -1; // DH: consider exception
         }
     }
 }

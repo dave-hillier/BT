@@ -11,6 +11,7 @@ namespace BS
         Empty = 0,
         Hit = 1,
         Miss = 2,
+        // DH: How do we add a new ship type?
         Destroyer = 3,
         Battleship = 4
     }

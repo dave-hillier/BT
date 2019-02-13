@@ -5,7 +5,7 @@ namespace BS
     /// <summary>
     /// <see cref="Cell"/> Location 
     /// </summary>
-    public class Coordinates : IEquatable<Coordinates>
+    public class Coordinates : IEquatable<Coordinates> // DH: consider tuple
     {
         public Coordinates(int x, int y)
         {

@@ -183,7 +183,7 @@ namespace BS
         /// <summary>
         /// Make sure that position for ship is empty 
         /// </summary>
-        private List<Coordinates> InsureEmptyCells(Coordinates startLoc, Coordinates endLoc)
+        private List<Coordinates> InsureEmptyCells(Coordinates startLoc, Coordinates endLoc) // DH: Ensure
         {
             var validLocs = new List<Coordinates>();
             if (!ValidCoordinates(startLoc) || !ValidCoordinates(endLoc))
@@ -219,7 +219,7 @@ namespace BS
         /// </summary>
         public static bool ValidCoordinates(Coordinates loc)
         {
-            if (loc.Y < 0 || loc.Y >= MaxColumn || loc.X < 0 || loc.X >= MaxRow)
+            if (loc.Y < 0 || loc.Y >= MaxColumn || loc.X < 0 || loc.X >= MaxRow) // DH: inline
             {
                 return false;
             }

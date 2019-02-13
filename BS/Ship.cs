@@ -7,7 +7,7 @@ namespace BS
     /// </summary>
     public abstract class Ship
     {
-        public Ship()
+        public Ship() // DH: consider 
         {
             Alive = true;
         }
@@ -27,7 +27,7 @@ namespace BS
         /// <value></value>
         public List<int> Hits { get; private set; }
 
-        public bool TakeHit(Coordinates loc)
+        public bool TakeHit(Coordinates loc) // DH: is this used?
         {
             if (!Alive)
             {

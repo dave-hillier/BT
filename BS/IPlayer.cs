@@ -3,10 +3,11 @@ namespace BS
     /// <summary>
     /// <see cref="Game" IPlayer/>
     /// </summary>
-    public interface IPlayer
+    public interface IPlayer // DH - looks a lot like a wrapper for string?
     {
         string Name { get; }
 
+        // DH: is this used?
         /// <summary>
         /// Identify if it's a normal player or computer one.
         /// </summary>
