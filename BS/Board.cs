@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,7 +9,6 @@ namespace BS
         public const int MaxRow = 10;
         public const int MaxColumn = 10;
         private readonly IPlayerInput _playerInput;
-        private Random _rand = new Random();
 
         public Board(IPlayerInput playerInput)
         {
@@ -108,10 +106,9 @@ namespace BS
         private void AddShip(Ship ship)
         {
             Log.Output($"Adding ship: {ship}");
-            var coords = new Coordinates(-1, -1);
             while (true)
             {
-                coords = _playerInput.GetCoordinates();
+                var coords = _playerInput.GetCoordinates();
                 if (ValidCoordinates(coords))
                 {
                     var dir = _playerInput.GetDirection();
@@ -134,8 +131,8 @@ namespace BS
 
         private Coordinates GetEndLocation(int shipSize, Coordinates loc, Direction direction)
         {
-            var x = 0;
-            var y = 0;
+            int x;
+            int y;
 
             if (direction == Direction.Down)
             {
@@ -219,12 +216,7 @@ namespace BS
         /// </summary>
         public static bool ValidCoordinates(Coordinates loc)
         {
-            if (loc.Y < 0 || loc.Y >= MaxColumn || loc.X < 0 || loc.X >= MaxRow) // DH: inline
-            {
-                return false;
-            }
-
-            return true;
+            return loc.Y >= 0 && loc.Y < MaxColumn && loc.X >= 0 && loc.X < MaxRow;
         }
     }
 }

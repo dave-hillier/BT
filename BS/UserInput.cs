@@ -19,7 +19,7 @@ namespace BS
                     continue;
                 }
 
-                x = RowLabels.GetLabelIndex(input[0].ToString().ToUpper());
+                x = RowLabels.GetLabelIndex(input[0].ToString().ToUpper()); // DH: index not checked
 
                 if (!int.TryParse(input[1].ToString(), out y))
                 {

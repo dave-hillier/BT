@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BS
+﻿namespace BS
 {
     /// <summary>
     /// <see cref="Player" Manager/>
@@ -8,7 +6,6 @@ namespace BS
     public class PlayerManager // DH: Class named Manager is a smell particularly as its 
     {
         private readonly IBoard _board;
-        private Random _rand = new Random();
         private readonly IPlayerInput _userInput;
 
         public PlayerManager(string name, bool isComputer)
@@ -21,9 +18,9 @@ namespace BS
 
         public IPlayer Player { get; }
 
-        public int Hits => _board != null ? _board.Hits : 0; // DH: consider using the newer ?. language feature
+        public int Hits => _board?.Hits ?? 0; // DH: consider using the newer ?. language feature
 
-        public object Misses => _board != null ? _board.Misses : 0;
+        public object Misses => _board?.Misses ?? 0;
 
         internal bool Lost()
         {
@@ -48,7 +45,6 @@ namespace BS
             Player.PrintDetails();
             displayer.DisplayBoard(_board);
         }
-
 
         private void AddShips() // DH: why not inline this?
         {
