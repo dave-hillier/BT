@@ -31,23 +31,21 @@ namespace BS
             }
         }
 
-        public Direction GetDirection()
+        public Orientation GetDirection()
         {
-            Log.Output("To which direction,[Rr] for toward right, and [Dd] toward down of the grid)");
+            Log.Output("To which orientation: [Hh] for horizontal, and [Vv] vertical of the grid)");
             while (true)
             {
-                var direction = Console.ReadLine();
-                if (direction.ToLower() == "r")
+                var orientation = Console.ReadLine();
+                switch (orientation.ToLower())
                 {
-                    return Direction.Right;
+                    case "h":
+                        return Orientation.Horizontal;
+                    case "v":
+                        return Orientation.Vertical;
                 }
 
-                if (direction.ToLower() == "d")
-                {
-                    return Direction.Down;
-                }
-
-                Log.Error("Invalid Right/Down direction, Please try again");
+                Log.Error("Invalid Horizontal/Vertical orientation, Please try again");
             }
         }
     }

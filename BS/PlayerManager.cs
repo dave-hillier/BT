@@ -13,12 +13,12 @@
             _userInput = isComputer ? new ComputerInput() : _userInput = new UserInput();
             _board = new Board(_userInput);
             Player = new Player(name, isComputer);
-            AddShips();
+            _board.InstallShips();
         }
 
         public IPlayer Player { get; }
 
-        public int Hits => _board?.Hits ?? 0; // DH: consider using the newer ?. language feature
+        public int Hits => _board?.Hits ?? 0;
 
         public object Misses => _board?.Misses ?? 0;
 
@@ -44,11 +44,6 @@
         {
             Player.PrintDetails();
             displayer.DisplayBoard(_board);
-        }
-
-        private void AddShips() // DH: why not inline this?
-        {
-            _board.InstallShips();
         }
     }
 }

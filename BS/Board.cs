@@ -63,26 +63,26 @@ namespace BS
         /// Add <see cref="Ship" />
         /// </summary>
         /// <returns>true of added, and false if not been added</returns>
-        public bool AddShip(Ship ship, Coordinates startLocation, Direction direction)
+        public bool AddShip(Ship ship, Coordinates startLocation, Orientation orientation)
         {
             if (InvalidCapacity(ship))
             {
                 return false;
             }
 
-            var endLocation = GetEndLocation(ship.Size, startLocation, direction);
+            var endLocation = GetEndLocation(ship.Size, startLocation, orientation);
 
             var cells = InsureEmptyCells(startLocation, endLocation);
 
             if (cells == null)
             {
-                Log.Output($"Cannot add {ship.Type} on your board at {startLocation} toward {direction}");
+                Log.Output($"Cannot add {ship.Type} on your board at {startLocation} toward {orientation}");
                 return false;
             }
 
             UpdateCells(cells, ship);
             Ships.Add(ship);
-            Log.Output($"Ship {ship} added on your board at {startLocation} toward {direction}");
+            Log.Output($"Ship {ship} added on your board at {startLocation} toward {orientation}");
             return true;
         }
 
@@ -129,12 +129,12 @@ namespace BS
             foreach (var loc in coordinates) Coordinates[loc.X, loc.Y] = ship.ToCell();
         }
 
-        private Coordinates GetEndLocation(int shipSize, Coordinates loc, Direction direction)
+        private Coordinates GetEndLocation(int shipSize, Coordinates loc, Orientation orientation)
         {
             int x;
             int y;
 
-            if (direction == Direction.Down)
+            if (orientation == Orientation.Vertical)
             {
                 x = loc.X;
                 y = loc.Y + shipSize;

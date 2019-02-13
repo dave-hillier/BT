@@ -4,6 +4,6 @@ namespace BS
     {
         Coordinates GetCoordinates();
 
-        Direction GetDirection();
+        Orientation GetDirection();
     }
 }

@@ -11,9 +11,9 @@ namespace BS
             return new Coordinates(_rand.Next(Board.MaxRow), _rand.Next(Board.MaxColumn));
         }
 
-        public Direction GetDirection()
+        public Orientation GetDirection()
         {
-            return (Direction) _rand.Next(1, 3);
+            return (Orientation) _rand.Next(1, 3);
         }
     }
 }

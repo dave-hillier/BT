@@ -22,6 +22,6 @@ namespace BS
         bool? TakeHit(Coordinates loc);
 
         // DH: Never used outside of test code and internal
-        bool AddShip(Ship ship, Coordinates loc, Direction direction);
+        bool AddShip(Ship ship, Coordinates loc, Orientation orientation);
     }
 }

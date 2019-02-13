@@ -15,7 +15,7 @@ namespace BS.UnitTest
         {
             var board = new Board(_userInput);
 
-            var added = board.AddShip(_destroyer, new Coordinates(4, 3), Direction.Down);
+            var added = board.AddShip(_destroyer, new Coordinates(4, 3), Orientation.Vertical);
 
             Assert.True(added);
             Assert.That(board.Ships, Has.Count.EqualTo(1));
@@ -27,8 +27,8 @@ namespace BS.UnitTest
         {
             var board = new Board(_userInput);
 
-            board.AddShip(_destroyer, new Coordinates(4, 3), Direction.Down);
-            var added = board.AddShip(_destroyer, new Coordinates(4, 4), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(4, 3), Orientation.Vertical);
+            var added = board.AddShip(_destroyer, new Coordinates(4, 4), Orientation.Vertical);
 
             Assert.False(added);
         }
@@ -38,7 +38,7 @@ namespace BS.UnitTest
         {
             var board = new Board(_userInput);
 
-            var added = board.AddShip(_destroyer, new Coordinates(14, 13), Direction.Down);
+            var added = board.AddShip(_destroyer, new Coordinates(14, 13), Orientation.Vertical);
 
             Assert.False(added);
         }
@@ -47,7 +47,7 @@ namespace BS.UnitTest
         public void GivenInValidHit_BoardShouldIncreaseMisses()
         {
             var board = new Board(_userInput);
-            board.AddShip(_destroyer, new Coordinates(1, 1), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(1, 1), Orientation.Vertical);
 
             board.TakeHit(new Coordinates(3, 3));
 
@@ -59,7 +59,7 @@ namespace BS.UnitTest
         public void GivenValidHit_BoardShouldIncreaseHits()
         {
             var board = new Board(_userInput);
-            board.AddShip(_destroyer, new Coordinates(1, 1), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(1, 1), Orientation.Vertical);
 
             board.TakeHit(new Coordinates(1, 1));
 
@@ -72,7 +72,7 @@ namespace BS.UnitTest
         public void GivenValidHitsEqualToShip_BoardLive_ShouldBeFalse()
         {
             var board = new Board(_userInput);
-            board.AddShip(_destroyer, new Coordinates(1, 1), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(1, 1), Orientation.Vertical);
 
             board.TakeHit(new Coordinates(1, 1));
             board.TakeHit(new Coordinates(1, 2));
@@ -85,7 +85,7 @@ namespace BS.UnitTest
         public void GivenValidHitsTwice_BoardCell_ShouldShowHit()
         {
             var board = new Board(_userInput);
-            board.AddShip(_destroyer, new Coordinates(1, 1), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(1, 1), Orientation.Vertical);
 
             board.TakeHit(new Coordinates(1, 1));
             board.TakeHit(new Coordinates(1, 1));
@@ -99,8 +99,8 @@ namespace BS.UnitTest
         {
             var board = new Board(_userInput);
 
-            board.AddShip(_destroyer, new Coordinates(4, 3), Direction.Down);
-            var added = board.AddShip(_destroyer, new Coordinates(4, 3), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(4, 3), Orientation.Vertical);
+            var added = board.AddShip(_destroyer, new Coordinates(4, 3), Orientation.Vertical);
 
             Assert.False(added);
         }

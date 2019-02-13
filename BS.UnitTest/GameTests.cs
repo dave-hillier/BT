@@ -33,9 +33,9 @@ namespace BS.UnitTest
             return new Coordinates(_rand.Next(4), _rand.Next(4));
         }
 
-        private Direction GenerateRandomDirection()
+        private Orientation GenerateRandomDirection()
         {
-            return (Direction) _rand.Next(1, 3);
+            return (Orientation) _rand.Next(1, 3);
         }
 
         private void DisplayCallBack(IBoard board)
@@ -46,7 +46,7 @@ namespace BS.UnitTest
         public void GivenBadHits_ComputerShouldWin()
         {
             var userInput = new Mock<IPlayerInput>();
-            userInput.Setup(x => x.GetDirection()).Returns(Direction.Down);
+            userInput.Setup(x => x.GetDirection()).Returns(Orientation.Vertical);
             // a Hack to limit hits 
             //( still there is a probability of having the computer's ship within this range)
             userInput.Setup(x => x.GetCoordinates()).Returns(GenerateLimitedCoords);
