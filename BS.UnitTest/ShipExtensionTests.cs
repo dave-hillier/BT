@@ -5,15 +5,16 @@ namespace BS.UnitTest
     [TestFixture]
     public class ShipExtensionTests
     {
-        public void GivenDestroyer_ShouldGetDestroyerCell()
+        [Test] // DH: missing Test?
+        public void GivenDestroyer_ShouldGetDestroyerCell() 
         {
-            Assert.That(new Destroyer().ToCell(), Is.EqualTo(Cell.Destroyer));
+            Assert.That(new Ship { Size = 4, Type = ShipType.Destroyer }.ToCell(), Is.EqualTo(Cell.Destroyer));
         }
 
         [Test]
         public void GivenBattelship_ShouldGetBattelshipCell()
         {
-            Assert.That(new Battleship().ToCell(), Is.EqualTo(Cell.Battleship));
+            Assert.That(new Ship { Size = 5, Type = ShipType.Battleship }.ToCell(), Is.EqualTo(Cell.Battleship));
         }
     }
 }

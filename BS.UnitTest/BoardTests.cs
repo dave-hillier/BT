@@ -8,17 +8,18 @@ namespace BS.UnitTest
     public class BoardTest
     {
         private readonly IPlayerInput _userInput = new UserInput();
+        private readonly Ship _destroyer = new Ship {Size = 4, Type = ShipType.Destroyer};
 
         [Test]
         public void GiveCoordinatesAndShip_BoardShouldAddShip()
         {
             var board = new Board(_userInput);
 
-            var added = board.AddShip(new Destroyer(), new Coordinates(4, 3), Direction.Down);
+            var added = board.AddShip(_destroyer, new Coordinates(4, 3), Direction.Down);
 
             Assert.True(added);
             Assert.That(board.Ships, Has.Count.EqualTo(1));
-            Assert.That(board.Ships.First().Type, Is.EqualTo(new Destroyer().Type));
+            Assert.That(board.Ships.First().Type, Is.EqualTo(_destroyer.Type));
         }
 
         [Test]
@@ -26,8 +27,8 @@ namespace BS.UnitTest
         {
             var board = new Board(_userInput);
 
-            board.AddShip(new Destroyer(), new Coordinates(4, 3), Direction.Down);
-            var added = board.AddShip(new Destroyer(), new Coordinates(4, 4), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(4, 3), Direction.Down);
+            var added = board.AddShip(_destroyer, new Coordinates(4, 4), Direction.Down);
 
             Assert.False(added);
         }
@@ -37,7 +38,7 @@ namespace BS.UnitTest
         {
             var board = new Board(_userInput);
 
-            var added = board.AddShip(new Destroyer(), new Coordinates(14, 13), Direction.Down);
+            var added = board.AddShip(_destroyer, new Coordinates(14, 13), Direction.Down);
 
             Assert.False(added);
         }
@@ -46,7 +47,7 @@ namespace BS.UnitTest
         public void GivenInValidHit_BoardShouldIncreaseMisses()
         {
             var board = new Board(_userInput);
-            var added = board.AddShip(new Destroyer(), new Coordinates(1, 1), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(1, 1), Direction.Down);
 
             board.TakeHit(new Coordinates(3, 3));
 
@@ -54,12 +55,11 @@ namespace BS.UnitTest
             Assert.That(board.Hits, Is.EqualTo(0));
         }
 
-
         [Test]
         public void GivenValidHit_BoardShouldIncreaseHits()
         {
             var board = new Board(_userInput);
-            var added = board.AddShip(new Destroyer(), new Coordinates(1, 1), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(1, 1), Direction.Down);
 
             board.TakeHit(new Coordinates(1, 1));
 
@@ -72,7 +72,7 @@ namespace BS.UnitTest
         public void GivenValidHitsEqualToShip_BoardLive_ShouldBeFalse()
         {
             var board = new Board(_userInput);
-            var added = board.AddShip(new Destroyer(), new Coordinates(1, 1), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(1, 1), Direction.Down);
 
             board.TakeHit(new Coordinates(1, 1));
             board.TakeHit(new Coordinates(1, 2));
@@ -85,7 +85,7 @@ namespace BS.UnitTest
         public void GivenValidHitsTwice_BoardCell_ShouldShowHit()
         {
             var board = new Board(_userInput);
-            var added = board.AddShip(new Destroyer(), new Coordinates(1, 1), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(1, 1), Direction.Down);
 
             board.TakeHit(new Coordinates(1, 1));
             board.TakeHit(new Coordinates(1, 1));
@@ -99,8 +99,8 @@ namespace BS.UnitTest
         {
             var board = new Board(_userInput);
 
-            board.AddShip(new Destroyer(), new Coordinates(4, 3), Direction.Down);
-            var added = board.AddShip(new Destroyer(), new Coordinates(4, 3), Direction.Down);
+            board.AddShip(_destroyer, new Coordinates(4, 3), Direction.Down);
+            var added = board.AddShip(_destroyer, new Coordinates(4, 3), Direction.Down);
 
             Assert.False(added);
         }
@@ -112,7 +112,7 @@ namespace BS.UnitTest
 
             board.InstallShips();
 
-            var expected = new List<Ship> {new Battleship(), new Destroyer(), new Destroyer()};
+            var expected = new List<Ship> {new Ship { Size= 5, Type = ShipType.Battleship }, _destroyer, _destroyer};
             CollectionAssert.AreEquivalent(expected.Select(s => s.Type), board.Ships.Select(s => s.Type));
         }
     }

@@ -88,9 +88,9 @@ namespace BS
 
         public void InstallShips()
         {
-            AddShip(new Destroyer());
-            AddShip(new Destroyer());
-            AddShip(new Battleship());
+            AddShip(new Ship { Size = 4, Type = ShipType.Destroyer });
+            AddShip(new Ship { Size = 4, Type = ShipType.Destroyer });
+            AddShip(new Ship { Size = 5, Type = ShipType.Battleship });
         }
 
         private Cell[,] GenerateBoardCells()
