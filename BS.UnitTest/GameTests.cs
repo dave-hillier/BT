@@ -19,8 +19,8 @@ namespace BS.UnitTest
                 .Callback((IBoard b) => DisplayCallBack(b));
 
             _userInput = new Mock<IPlayerInput>();
-            _userInput.Setup(x => x.GetDirection()).Returns(GenerateRandomDirection);
-            _userInput.Setup(x => x.GetCoordinates()).Returns(GenerateRandomCoords);
+            _userInput.Setup(x => x.ReadDirection()).Returns(GenerateRandomDirection);
+            _userInput.Setup(x => x.ReadCoordinates()).Returns(GenerateRandomCoords);
         }
 
         private Coordinates GenerateRandomCoords()
@@ -46,10 +46,10 @@ namespace BS.UnitTest
         public void GivenBadHits_ComputerShouldWin()
         {
             var userInput = new Mock<IPlayerInput>();
-            userInput.Setup(x => x.GetDirection()).Returns(Orientation.Vertical);
+            userInput.Setup(x => x.ReadDirection()).Returns(Orientation.Vertical);
             // a Hack to limit hits 
             //( still there is a probability of having the computer's ship within this range)
-            userInput.Setup(x => x.GetCoordinates()).Returns(GenerateLimitedCoords);
+            userInput.Setup(x => x.ReadCoordinates()).Returns(GenerateLimitedCoords);
             var game = new Game(_boardDisplayer.Object);
             var playerName = "Mohammad";
 

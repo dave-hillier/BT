@@ -4,7 +4,7 @@ namespace BS
 {
     public class UserInput : IPlayerInput
     {
-        public Coordinates GetCoordinates()
+        public Coordinates ReadCoordinates()
         {
             Log.Output(
                 "Please Enter a coordinates using letters for rows and number for columns, ex: A5 (A for row and 5 for column)");
@@ -31,7 +31,7 @@ namespace BS
             }
         }
 
-        public Orientation GetDirection()
+        public Orientation ReadDirection()
         {
             Log.Output("To which orientation: [Hh] for horizontal, and [Vv] vertical of the grid)");
             while (true)

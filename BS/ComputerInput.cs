@@ -6,12 +6,12 @@ namespace BS
     {
         private readonly Random _rand = new Random();
 
-        public Coordinates GetCoordinates()
+        public Coordinates ReadCoordinates()
         {
             return new Coordinates(_rand.Next(Board.MaxRow), _rand.Next(Board.MaxColumn));
         }
 
-        public Orientation GetDirection()
+        public Orientation ReadDirection()
         {
             return (Orientation) _rand.Next(1, 3);
         }

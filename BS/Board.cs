@@ -108,10 +108,10 @@ namespace BS
             Log.Output($"Adding ship: {ship}");
             while (true)
             {
-                var coords = _playerInput.GetCoordinates();
+                var coords = _playerInput.ReadCoordinates();
                 if (ValidCoordinates(coords))
                 {
-                    var dir = _playerInput.GetDirection();
+                    var dir = _playerInput.ReadDirection();
                     var added = AddShip(ship, coords, dir);
                     if (added)
                     {

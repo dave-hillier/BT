@@ -34,7 +34,7 @@
 
         public Coordinates Hit()
         {
-            return _userInput.GetCoordinates();
+            return _userInput.ReadCoordinates();
         }
 
         /// <summary>
